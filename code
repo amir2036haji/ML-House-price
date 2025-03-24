@@ -1,0 +1,36 @@
+!gdown --id 1shBZAw8s7b2jse4rmD8RhJ1WF-5zxfB7
+
+import numpy as np
+import pandas as pd
+
+
+column_names = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']
+
+
+
+df = pd.read_csv('/content/housing.csv', header=None, delimiter=r"\s+", names=column_names)
+
+
+print(df.head())
+
+df.shape
+
+
+type(df)
+
+print(df.describe())
+
+df.size
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+from scipy import stats
+
+
+fig, axs= plt.subplots(ncols=7, nrows=2, figsize=(20,10))
+index=0
+axs= axs.flatten()
+for k,v in df.items():
+  sns.boxplot(y=k, data=df, ax=axs[index])
+  index +=1
+plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=5.0)
